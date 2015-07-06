@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-	public List<Singleton> singletons;
+	public List<Singleton> singletonPrefabs;
 	
 	void Awake ()
 	{
@@ -13,11 +13,11 @@ public class GameController : MonoBehaviour
 
 	void InstantiateSingletons ()
 	{
-		singletons.ForEach ((singleton) => {
+		singletonPrefabs.ForEach ((singletonPrefab) => {
 			// Instantiate only if singleton not found
-			if (!GameObject.Find (singleton.name)) {
-				Object singletonInstance = Instantiate (singleton);
-				singletonInstance.name = singleton.name;
+			if (!GameObject.Find (singletonPrefab.name)) {
+				Object singletonInstance = Instantiate (singletonPrefab);
+				singletonInstance.name = singletonPrefab.name;
 			}
 		});
 	}
