@@ -5,11 +5,8 @@ using System.Collections.Generic;
 public class GameController : MonoBehaviour
 {
 	public List<Singleton> singletons;
-
-	const string CLONE_SUFFIX = "(Clone)";
-
-	// Use this for initialization
-	void Start ()
+	
+	void Awake ()
 	{
 		InstantiateSingletons ();
 	}
@@ -18,8 +15,9 @@ public class GameController : MonoBehaviour
 	{
 		singletons.ForEach ((singleton) => {
 			// Instantiate only if singleton not found
-			if (!GameObject.Find (singleton.name + CLONE_SUFFIX)) {
-				Instantiate (singleton);
+			if (!GameObject.Find (singleton.name)) {
+				Object singletonInstance = Instantiate (singleton);
+				singletonInstance.name = singleton.name;
 			}
 		});
 	}
