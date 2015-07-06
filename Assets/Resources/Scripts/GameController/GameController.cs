@@ -1,29 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-	public List<Singleton> singletonPrefabs;
-	
-	void Awake ()
-	{
-		InstantiateSingletons ();
-	}
+	public AudioClip music;
 
-	void InstantiateSingletons ()
+	void Start ()
 	{
-		singletonPrefabs.ForEach ((singletonPrefab) => {
-			// Instantiate only if singleton not found
-			if (!GameObject.Find (singletonPrefab.name)) {
-				Object singletonInstance = Instantiate (singletonPrefab);
-				singletonInstance.name = singletonPrefab.name;
-			}
-		});
+		SoundManager.Instance.PlayMusic (music);
 	}
 
 	public void GoToLevel (string level)
 	{
+		// Scene Fade-out
 		Application.LoadLevel (level);
+		// Scene Fade-in
 	}
 }

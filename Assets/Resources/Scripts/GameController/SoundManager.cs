@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SoundManager : Singleton
+public class SoundManager : Singleton<SoundManager>
 {
 	bool FxEnabled;
 	bool MusicEnabled;
-	AudioSource backgroundMusicSource;
-	GameObject backgroundMusic;
+	AudioSource musicSource;
+	GameObject music;
 
-	void Start ()
+	void Awake ()
 	{
-		backgroundMusic = new GameObject ();
-		FxEnabled = PlayerSettings.FxEnabled ();
-		MusicEnabled = PlayerSettings.MusicEnabled ();
+		music = new GameObject ("Music");
+		DontDestroyOnLoad (music);
+		FxEnabled = PlayerSettings.Instance.FXEnabled ();
+		MusicEnabled = PlayerSettings.Instance.MusicEnabled ();
 	}
 
 	public void PlayFX (AudioClip clip, bool loop = false, float volume = 1f, float pitch = 1f)
@@ -20,17 +21,16 @@ public class SoundManager : Singleton
 		if (!FxEnabled)
 			return;
 		// Create an empty game object
-		GameObject go = new GameObject ("Audio: " + clip.name);
-		
-		// Create the source
-		AudioSource source = go.AddComponent<AudioSource> ();
+		GameObject audio = new GameObject ("Audio: " + clip.name);
+		AudioSource source = audio.AddComponent<AudioSource> ();
 		source.clip = clip;
 		source.loop = loop;
 		source.volume = volume;
 		source.pitch = pitch;
 		source.Play ();
 		if (!loop) {
-			Destroy (go, clip.length);
+			// Destroy when clip finishes playing
+			Destroy (audio, clip.length);
 		}
 	}
 
@@ -39,21 +39,33 @@ public class SoundManager : Singleton
 		if (!MusicEnabled)
 			return;
 		// Ensures only one music source is being played
-		if (backgroundMusicSource.isActiveAndEnabled && backgroundMusicSource.isPlaying) {
-			backgroundMusicSource.Stop ();
-			Destroy (backgroundMusicSource);
+		if (musicSource && musicSource.isPlaying) {
+			// If music clip is the same, do nothing
+			if (musicSource.clip == clip)
+				return;
+			musicSource.Stop ();
+			Destroy (musicSource);
 		}
-		backgroundMusicSource = backgroundMusic.AddComponent<AudioSource> ();
-		backgroundMusic.name = "Music: " + clip.name;
-		backgroundMusicSource.clip = clip;
-		backgroundMusicSource.loop = true;
-		backgroundMusicSource.volume = volume;
-		backgroundMusicSource.pitch = pitch;
-		backgroundMusicSource.Play ();
+		music.name = "Music: " + clip.name;
+		musicSource = music.AddComponent<AudioSource> ();
+		musicSource.clip = clip;
+		musicSource.loop = true;
+		musicSource.volume = volume;
+		musicSource.pitch = pitch;
+		musicSource.Play ();
 	}
 
-	public void StopAll ()
+	public void ToggleMusic (bool enabled)
 	{
-		backgroundMusicSource.Stop ();
+		if (enabled) {
+			musicSource.Play ();
+		} else {
+			musicSource.Stop ();
+		}
+	}
+
+	public void ToggleFX (bool enabled)
+	{
+		throw new System.NotImplementedException ();
 	}
 }

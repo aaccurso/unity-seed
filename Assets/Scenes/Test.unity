@@ -140,18 +140,14 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
---- !u!1001 &1231395234
+  m_RootOrder: 1
+--- !u!1001 &1208992302
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 11463738, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
-      propertyPath: singletons.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 446430, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -182,18 +178,16 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 446430, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11463738, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
-      propertyPath: singletons.Array.data[0]
+      propertyPath: clip
       value: 
-      objectReference: {fileID: 11424744, guid: 5accba01ebbf94c789166d03aa1cab5e,
-        type: 2}
+      objectReference: {fileID: 8300000, guid: 24d07a5cc93374bcb955d53d543f968c, type: 3}
     - target: {fileID: 11463738, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
-      propertyPath: singletons.Array.data[1]
+      propertyPath: music
       value: 
-      objectReference: {fileID: 11473180, guid: 7b5d27e12b7fb44f7b48a5cceb8c3a8d,
-        type: 2}
+      objectReference: {fileID: 8300000, guid: 24d07a5cc93374bcb955d53d543f968c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
   m_IsPrefabParent: 0

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerSettings : Singleton
+public class PlayerSettings : Singleton<PlayerSettings>
 {
 	public static int TRUE = 1;
 	public static int FALSE = 0;
@@ -12,36 +12,43 @@ public class PlayerSettings : Singleton
 
 	void Awake ()
 	{
-		if (PlayerPrefs.GetInt (FIRST_START) == TRUE) {
-			PlayerPrefs.SetInt (FIRST_START, FALSE);
-			PlayerPrefs.SetString (LANGUAGE, "ES");
-			PlayerPrefs.SetInt (MUSIC_ENABLED, TRUE);
-			PlayerPrefs.SetInt (FX_ENABLED, TRUE);
-			PlayerPrefs.Save ();
+		if (PlayerPrefs.GetInt (FIRST_START) == FALSE) {
+			ResetDefaultSettings ();
 		}
 	}
 
-	public static bool FxEnabled ()
+	public void ResetDefaultSettings ()
+	{
+		PlayerPrefs.SetInt (FIRST_START, FALSE);
+		PlayerPrefs.SetString (LANGUAGE, "ES");
+		PlayerPrefs.SetInt (MUSIC_ENABLED, TRUE);
+		PlayerPrefs.SetInt (FX_ENABLED, TRUE);
+		PlayerPrefs.Save ();
+	}
+
+	public bool FXEnabled ()
 	{
 		return PlayerPrefs.GetInt (FX_ENABLED) == TRUE;
 	}
 
-	public static void EnableFx (bool enabled)
+	public void ToggleFX (bool enabled)
 	{
 		PlayerPrefs.SetInt (FX_ENABLED, enabled ? TRUE : FALSE);
+		// SoundManager.Instance.ToggleFX (enabled);
 	}
 
-	public static bool MusicEnabled ()
+	public bool MusicEnabled ()
 	{
 		return PlayerPrefs.GetInt (MUSIC_ENABLED) == TRUE;
 	}
 
-	public static void EnableMusic (bool enabled)
+	public void ToggleMusic (bool enabled)
 	{
 		PlayerPrefs.SetInt (MUSIC_ENABLED, enabled ? TRUE : FALSE);
+		SoundManager.Instance.ToggleMusic (enabled);
 	}
 
-	public static string Language ()
+	public string Language ()
 	{
 		return PlayerPrefs.GetString (LANGUAGE);
 	}
