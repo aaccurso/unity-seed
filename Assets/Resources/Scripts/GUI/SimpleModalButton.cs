@@ -7,6 +7,6 @@ public class SimpleModalButton : MonoBehaviour
 
 	public void OnClick ()
 	{
-		GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ().GoToLevel (level);
+		GameObject.FindGameObjectWithTag (Tags.GAME_CONTROLLER).GetComponent<GameController> ().GoToLevel (level);
 	}
 }

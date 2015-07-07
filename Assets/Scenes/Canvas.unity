@@ -591,7 +591,7 @@ GameObject:
   - 114: {fileID: 1539161202}
   - 114: {fileID: 1539161201}
   m_Layer: 5
-  m_Name: ModalsGroup
+  m_Name: ModalGroup
   m_TagString: ModalGroup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

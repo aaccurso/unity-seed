@@ -7,7 +7,7 @@ public class CreateModalButton : MonoBehaviour
 
 	public void OnClick ()
 	{
-		GameObject ModalGroup = GameObject.FindGameObjectWithTag ("ModalGroup");
+		GameObject ModalGroup = GameObject.FindGameObjectWithTag (Tags.MODALS_GROUP);
 		GameObject ModalInstance = Instantiate (Modal) as GameObject;
 		ModalInstance.GetComponent<RectTransform> ().transform.SetParent (ModalGroup.GetComponent<RectTransform> (), false);
 		ModalInstance.GetComponent<SimpleModal> ().Show ();
