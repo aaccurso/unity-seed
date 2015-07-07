@@ -166,18 +166,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 22364670, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1623387864}
     - target: {fileID: 22341088, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1623387864}
-    - target: {fileID: 22326312, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
-      propertyPath: m_OverrideSorting
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 22364670, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1623387864}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
   m_IsPrefabParent: 0
