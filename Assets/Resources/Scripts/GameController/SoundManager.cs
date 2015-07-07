@@ -3,7 +3,7 @@ using System.Collections;
 
 public class SoundManager : Singleton<SoundManager>
 {
-	bool FxEnabled;
+	bool FXEnabled;
 	bool MusicEnabled;
 	AudioSource musicSource;
 	GameObject music;
@@ -12,13 +12,21 @@ public class SoundManager : Singleton<SoundManager>
 	{
 		music = new GameObject ("Music");
 		DontDestroyOnLoad (music);
-		FxEnabled = PlayerSettings.Instance.FXEnabled ();
+		FXEnabled = PlayerSettings.Instance.FXEnabled ();
 		MusicEnabled = PlayerSettings.Instance.MusicEnabled ();
+	}
+
+	void Update ()
+	{
+		if (Input.GetKeyDown (KeyCode.M)) {
+			ToggleFX (!FXEnabled);
+			ToggleMusic (!MusicEnabled);
+		}
 	}
 
 	public void PlayFX (AudioClip clip, bool loop = false, float volume = 1f, float pitch = 1f)
 	{
-		if (!(FxEnabled && clip))
+		if (!(FXEnabled && clip))
 			return;
 		// Create an empty game object
 		GameObject audio = new GameObject ("Audio: " + clip.name);
@@ -57,6 +65,7 @@ public class SoundManager : Singleton<SoundManager>
 
 	public void ToggleMusic (bool enabled)
 	{
+		MusicEnabled = enabled;
 		if (enabled) {
 			musicSource.Play ();
 		} else {
@@ -66,6 +75,6 @@ public class SoundManager : Singleton<SoundManager>
 
 	public void ToggleFX (bool enabled)
 	{
-		throw new System.NotImplementedException ();
+		FXEnabled = enabled;
 	}
 }

@@ -34,7 +34,7 @@ public class PlayerSettings : Singleton<PlayerSettings>
 	public void ToggleFX (bool enabled)
 	{
 		PlayerPrefs.SetInt (FX_ENABLED, enabled ? TRUE : FALSE);
-		// SoundManager.Instance.ToggleFX (enabled);
+		SoundManager.Instance.ToggleFX (enabled);
 	}
 
 	public bool MusicEnabled ()
