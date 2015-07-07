@@ -11,6 +11,7 @@ public class SoundManager : Singleton<SoundManager>
 	void Awake ()
 	{
 		music = new GameObject ("Music");
+		music.transform.SetParent (this.gameObject.transform);
 		DontDestroyOnLoad (music);
 		FXEnabled = PlayerSettings.Instance.FXEnabled ();
 		MusicEnabled = PlayerSettings.Instance.MusicEnabled ();
@@ -30,6 +31,7 @@ public class SoundManager : Singleton<SoundManager>
 			return;
 		// Create an empty game object
 		GameObject audio = new GameObject ("Audio: " + clip.name);
+		audio.transform.SetParent (this.gameObject.transform);
 		AudioSource source = audio.AddComponent<AudioSource> ();
 		source.clip = clip;
 		source.loop = loop;
