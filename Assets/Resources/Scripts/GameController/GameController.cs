@@ -1,10 +1,20 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Linq;
 
 public class GameController : MonoBehaviour
 {
 	public AudioClip music;
+	public GameObject ScreenFX;
+	FadeScreenTransition screenTransition;
+
+	void Awake ()
+	{
+		if (ScreenFX) {
+			screenTransition = ScreenFX.GetComponentInChildren<FadeScreenTransition> ();
+		}
+	}
 
 	void Start ()
 	{
@@ -13,8 +23,10 @@ public class GameController : MonoBehaviour
 
 	public void GoToLevel (string level)
 	{
-		// TODO: Scene Fade-out
-		Application.LoadLevel (level);
-		// TODO: Scene Fade-in
+		if (screenTransition) {
+			screenTransition.PreTransition (level);
+		} else {
+			Application.LoadLevel (level);
+		}
 	}
 }

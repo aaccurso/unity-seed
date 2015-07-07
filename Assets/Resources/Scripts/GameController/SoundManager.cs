@@ -68,6 +68,8 @@ public class SoundManager : Singleton<SoundManager>
 	public void ToggleMusic (bool enabled)
 	{
 		MusicEnabled = enabled;
+		if (!musicSource)
+			return;
 		if (enabled) {
 			musicSource.Play ();
 		} else {
