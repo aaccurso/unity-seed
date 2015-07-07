@@ -20,6 +20,8 @@ public class SoundManager : Singleton<SoundManager>
 	void Update ()
 	{
 		if (Input.GetKeyDown (KeyCode.M)) {
+			Debug.Log ("MusicEnabled: " + MusicEnabled.ToString ());
+			Debug.Log ("FXEnabled: " + FXEnabled.ToString ());
 			ToggleFX (!FXEnabled);
 			ToggleMusic (!MusicEnabled);
 		}
