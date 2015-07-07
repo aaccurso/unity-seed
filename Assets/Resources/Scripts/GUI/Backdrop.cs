@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Backdrop : MonoBehaviour
 {
 	Image image;
-	const float FADE_DURATION = 0.5f;
+	const float FADE_DURATION = 0.4f;
 
 	void Awake ()
 	{
@@ -14,13 +14,13 @@ public class Backdrop : MonoBehaviour
 		image.color = Color.clear;
 	}
 
-	public void Show ()
+	public Tweener Show ()
 	{
-		image.DOFade (1f, FADE_DURATION);
+		return image.DOFade (1f, FADE_DURATION);
 	}
 
-	public void Hide ()
+	public Tweener Hide ()
 	{
-		image.DOFade (0f, FADE_DURATION);
+		return image.DOFade (0f, FADE_DURATION);
 	}
 }

@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class SimpleModal : MonoBehaviour
 {
-	Popup popup;
 	Backdrop backdrop;
+	Popup popup;
 
 	void Awake ()
 	{
-		popup = this.GetComponentInChildren<Popup> ();
 		backdrop = this.GetComponentInChildren<Backdrop> ();
+		popup = this.GetComponentInChildren<Popup> ();
 	}
 
 	public void Show ()
 	{
-		popup.Show ();
 		backdrop.Show ();
+		popup.Show ();
 	}
 
 	public void Hide ()
 	{
-		popup.Hide ();
 		backdrop.Hide ();
+		popup.Hide ().OnComplete (() => {
+			Destroy (this.gameObject);
+		});
 	}
 }
