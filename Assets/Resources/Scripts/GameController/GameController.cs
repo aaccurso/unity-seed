@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GameController : MonoBehaviour
@@ -12,8 +13,8 @@ public class GameController : MonoBehaviour
 
 	public void GoToLevel (string level)
 	{
-		// Scene Fade-out
+		// TODO: Scene Fade-out
 		Application.LoadLevel (level);
-		// Scene Fade-in
+		// TODO: Scene Fade-in
 	}
 }

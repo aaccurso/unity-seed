@@ -18,7 +18,7 @@ public class SoundManager : Singleton<SoundManager>
 
 	public void PlayFX (AudioClip clip, bool loop = false, float volume = 1f, float pitch = 1f)
 	{
-		if (!FxEnabled)
+		if (!(FxEnabled && clip))
 			return;
 		// Create an empty game object
 		GameObject audio = new GameObject ("Audio: " + clip.name);
@@ -36,7 +36,7 @@ public class SoundManager : Singleton<SoundManager>
 
 	public void PlayMusic (AudioClip clip, float volume = 1f, float pitch = 1f)
 	{
-		if (!MusicEnabled)
+		if (!(MusicEnabled && clip))
 			return;
 		// Ensures only one music source is being played
 		if (musicSource && musicSource.isPlaying) {
