@@ -39,9 +39,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca7cb59b622e54be8ab685279ceeab6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  singletons:
-  - {fileID: 11424744, guid: 5accba01ebbf94c789166d03aa1cab5e, type: 2}
-  - {fileID: 11473180, guid: 7b5d27e12b7fb44f7b48a5cceb8c3a8d, type: 2}
+  music: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

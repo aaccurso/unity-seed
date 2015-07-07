@@ -4,9 +4,21 @@ using DG.Tweening;
 
 public class Popup : MonoBehaviour
 {
-	// Use this for initialization
+	float startY;
+	const float MOVE_DURATION = 1f;
+
 	void Start ()
 	{
-		this.transform.DOMoveY (2f, 1f);
+		startY = this.GetComponent<RectTransform> ().position.y;
+	}
+
+	public void Show ()
+	{
+		this.transform.DOMoveY (0, MOVE_DURATION);
+	}
+
+	public void Hide ()
+	{
+		this.transform.DOMoveY (startY, MOVE_DURATION);
 	}
 }
