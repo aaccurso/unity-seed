@@ -5,7 +5,7 @@ using DG.Tweening;
 public class Popup : MonoBehaviour
 {
 	float startY;
-	const float MOVE_DURATION = 0.8f;
+	const float MOVE_DURATION = 0.5f;
 
 	void Start ()
 	{

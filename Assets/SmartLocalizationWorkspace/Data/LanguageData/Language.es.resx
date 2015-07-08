@@ -117,12 +117,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 	<data name="ConfigMenu.Music" xml:space="preserve">
-		<value>Music</value>
+		<value>Música</value>
 	</data>
 	<data name="ConfigMenu.Sounds" xml:space="preserve">
-		<value>Sounds</value>
+		<value>Sonidos</value>
 	</data>
 	<data name="ConfigMenu.Title" xml:space="preserve">
-		<value>Settings</value>
+		<value>Configuración</value>
 	</data>
 </root>
