@@ -5,9 +5,9 @@ using UnityEngine.UI;
 
 public class FadeScreenTransition : MonoBehaviour
 {
+	const float DEFAULT_FADE_DURATION = 0.4f;
+	
 	Image image;
-
-	const float FADE_DURATION = 0.4f;
 
 	void Awake ()
 	{
@@ -23,20 +23,20 @@ public class FadeScreenTransition : MonoBehaviour
 		image.enabled = false;
 	}
 
-	public Tweener PreTransition (string level)
+	public Tweener PreTransition (string level, float fadeDuration = DEFAULT_FADE_DURATION)
 	{
 		image.enabled = true;
 		// Fade in
-		return image.DOFade (1f, FADE_DURATION).OnComplete (() => {
+		return image.DOFade (1f, fadeDuration).OnComplete (() => {
 			Application.LoadLevel (level);
-			PostTransition ();
+			PostTransition (fadeDuration);
 		});
 	}
 
-	public Tweener PostTransition ()
+	public Tweener PostTransition (float fadeDuration = DEFAULT_FADE_DURATION)
 	{
 		// Fade out
-		return image.DOFade (0, FADE_DURATION).OnComplete (() => {
+		return image.DOFade (0, fadeDuration).OnComplete (() => {
 			image.enabled = false;
 		});
 	}

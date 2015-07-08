@@ -410,6 +410,10 @@ Prefab:
       propertyPath: ScreenFX
       value: 
       objectReference: {fileID: 1214472099}
+    - target: {fileID: 11463738, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 8300000, guid: 24d07a5cc93374bcb955d53d543f968c, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 653ad3f0248664f30b9f5980a9460c9d, type: 2}
   m_IsPrefabParent: 0

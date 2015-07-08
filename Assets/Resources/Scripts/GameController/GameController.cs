@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Linq;
 
 public class GameController : MonoBehaviour
 {
+	const float FADE_DURATION = 0.3f;
+
 	public AudioClip music;
 	FadeScreenTransition screenTransition;
 
@@ -23,8 +24,9 @@ public class GameController : MonoBehaviour
 
 	public void GoToLevel (string level)
 	{
+		SoundManager.Instance.StopMusic (FADE_DURATION);
 		if (screenTransition) {
-			screenTransition.PreTransition (level);
+			screenTransition.PreTransition (level, FADE_DURATION);
 		} else {
 			Application.LoadLevel (level);
 		}

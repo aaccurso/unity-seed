@@ -1,12 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
+using DG.Tweening;
 
 public class SoundManager : Singleton<SoundManager>
 {
+	const float DEFAULT_FADE_DURATION = 0.3f;
+	const float DEFAULT_VOLUME = 1f;
+	const float UNITY_EDITOR_VOLUME = 0.1f;
+
 	bool FXEnabled;
 	bool MusicEnabled;
 	AudioSource musicSource;
 	GameObject music;
+	float defaultVolume = DEFAULT_VOLUME;
 
 	void Awake ()
 	{
@@ -15,21 +21,29 @@ public class SoundManager : Singleton<SoundManager>
 		DontDestroyOnLoad (music);
 		FXEnabled = PlayerSettings.Instance.FXEnabled ();
 		MusicEnabled = PlayerSettings.Instance.MusicEnabled ();
+		#if UNITY_EDITOR
+		this.defaultVolume = UNITY_EDITOR_VOLUME;
+		#endif
 	}
 
-#if UNITY_EDITOR
+	#if UNITY_EDITOR
 	void Update ()
 	{
+		// Key M: mutes music and sound
 		if (Input.GetKeyDown (KeyCode.M)) {
 			ToggleFX (!FXEnabled);
 			ToggleMusic (!MusicEnabled);
 			Debug.Log ("MusicEnabled: " + MusicEnabled.ToString ());
 			Debug.Log ("FXEnabled: " + FXEnabled.ToString ());
 		}
+		// Key V: sets volume to max value
+		if (Input.GetKeyDown (KeyCode.V)) {
+			this.defaultVolume = DEFAULT_VOLUME;
+		}
 	}
-#endif
+	#endif
 
-	public void PlayFX (AudioClip clip, bool loop = false, float volume = 1f, float pitch = 1f)
+	public void PlayFX (AudioClip clip, bool loop = false, float volume = DEFAULT_VOLUME, float pitch = DEFAULT_VOLUME)
 	{
 		if (!(FXEnabled && clip))
 			return;
@@ -39,7 +53,7 @@ public class SoundManager : Singleton<SoundManager>
 		AudioSource source = audio.AddComponent<AudioSource> ();
 		source.clip = clip;
 		source.loop = loop;
-		source.volume = volume;
+		source.volume = this.defaultVolume < DEFAULT_VOLUME ? this.defaultVolume : volume;
 		source.pitch = pitch;
 		source.Play ();
 		if (!loop) {
@@ -48,7 +62,7 @@ public class SoundManager : Singleton<SoundManager>
 		}
 	}
 
-	public void PlayMusic (AudioClip clip, float volume = 1f, float pitch = 1f)
+	public void PlayMusic (AudioClip clip, float volume = DEFAULT_VOLUME, float pitch = DEFAULT_VOLUME)
 	{
 		if (!(MusicEnabled && clip))
 			return;
@@ -64,7 +78,7 @@ public class SoundManager : Singleton<SoundManager>
 		musicSource = music.AddComponent<AudioSource> ();
 		musicSource.clip = clip;
 		musicSource.loop = true;
-		musicSource.volume = volume;
+		musicSource.volume = this.defaultVolume < DEFAULT_VOLUME ? this.defaultVolume : volume;
 		musicSource.pitch = pitch;
 		musicSource.Play ();
 	}
@@ -76,13 +90,23 @@ public class SoundManager : Singleton<SoundManager>
 			return;
 		if (enabled) {
 			musicSource.Play ();
+			musicSource.DOFade (this.defaultVolume, DEFAULT_FADE_DURATION);
 		} else {
-			musicSource.Stop ();
+			StopMusic ();
 		}
 	}
 
 	public void ToggleFX (bool enabled)
 	{
 		FXEnabled = enabled;
+	}
+
+	public void StopMusic (float fadeDuration = DEFAULT_FADE_DURATION)
+	{
+		if (!musicSource)
+			return;
+		musicSource.DOFade (0, fadeDuration).OnComplete (() => {
+			musicSource.Stop ();
+		});
 	}
 }
