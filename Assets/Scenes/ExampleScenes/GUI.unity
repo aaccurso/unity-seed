@@ -462,11 +462,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 488
       objectReference: {fileID: 0}
     - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 286
       objectReference: {fileID: 0}
     - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_AnchorMin.x
@@ -486,16 +486,32 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_Pivot.x
-      value: 0
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_Pivot.y
-      value: 0
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 22364670, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1623387864}
+    - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .0349650346
+      objectReference: {fileID: 0}
+    - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .0349650346
+      objectReference: {fileID: 0}
+    - target: {fileID: 22451426, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
+      propertyPath: m_LocalScale.z
+      value: .0349650346
+      objectReference: {fileID: 0}
+    - target: {fileID: 22364670, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 61037babce9c54ee1ac60c5b579f0e17, type: 2}
   m_IsPrefabParent: 0

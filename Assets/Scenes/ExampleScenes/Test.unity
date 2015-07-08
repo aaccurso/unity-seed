@@ -274,7 +274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Button
+  m_Text: Back
 --- !u!222 &689088189
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -449,7 +449,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -164, y: -128}
+  m_AnchoredPosition: {x: -119, y: -91}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: .5, y: .5}
 --- !u!1 &1623387860
@@ -562,8 +562,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1772980887}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: .0404858291, y: .0404858291, z: .0404858291}
   m_Children:
   - {fileID: 1429745381}
   m_Father: {fileID: 0}
@@ -571,8 +571,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 439, y: 247}
+  m_Pivot: {x: .5, y: .5}
 --- !u!114 &1772980889
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,7 +618,7 @@ Canvas:
   m_GameObject: {fileID: 1772980887}
   m_Enabled: 1
   serializedVersion: 2
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 1623387864}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
