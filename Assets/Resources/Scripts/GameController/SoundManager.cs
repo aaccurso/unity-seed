@@ -17,15 +17,17 @@ public class SoundManager : Singleton<SoundManager>
 		MusicEnabled = PlayerSettings.Instance.MusicEnabled ();
 	}
 
+#if UNITY_EDITOR
 	void Update ()
 	{
 		if (Input.GetKeyDown (KeyCode.M)) {
-			Debug.Log ("MusicEnabled: " + MusicEnabled.ToString ());
-			Debug.Log ("FXEnabled: " + FXEnabled.ToString ());
 			ToggleFX (!FXEnabled);
 			ToggleMusic (!MusicEnabled);
+			Debug.Log ("MusicEnabled: " + MusicEnabled.ToString ());
+			Debug.Log ("FXEnabled: " + FXEnabled.ToString ());
 		}
 	}
+#endif
 
 	public void PlayFX (AudioClip clip, bool loop = false, float volume = 1f, float pitch = 1f)
 	{
