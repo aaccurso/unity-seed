@@ -6,7 +6,7 @@ using DG.Tweening;
 public class Backdrop : MonoBehaviour
 {
 	Image image;
-	const float FADE_DURATION = 0.4f;
+	const float FADE_DURATION = 0.3f;
 
 	void Awake ()
 	{
