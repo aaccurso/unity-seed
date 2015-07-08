@@ -11,11 +11,13 @@ public class FadeScreenTransition : MonoBehaviour
 
 	void Awake ()
 	{
+		if (GameObject.FindGameObjectsWithTag (Tags.SCREEN_FX).Length == 1) {
+			DontDestroyOnLoad (this.gameObject.transform.parent);
+		}
 	}
 
 	void Start ()
 	{
-		DontDestroyOnLoad (this.gameObject.transform.parent);
 		image = this.GetComponent<Image> ();
 		image.color = Color.clear;
 		image.enabled = false;

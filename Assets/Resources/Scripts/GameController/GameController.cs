@@ -6,11 +6,11 @@ using System.Linq;
 public class GameController : MonoBehaviour
 {
 	public AudioClip music;
-	public GameObject ScreenFX;
 	FadeScreenTransition screenTransition;
 
 	void Awake ()
 	{
+		GameObject ScreenFX = GameObject.FindGameObjectWithTag (Tags.SCREEN_FX);
 		if (ScreenFX) {
 			screenTransition = ScreenFX.GetComponentInChildren<FadeScreenTransition> ();
 		}
