@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/TemplateScenes/Intro.unity
+  - enabled: 1
     path: Assets/Scenes/ExampleScenes/GUI.unity
   - enabled: 1
     path: Assets/Scenes/ExampleScenes/Test.unity

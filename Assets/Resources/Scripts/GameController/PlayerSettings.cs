@@ -20,7 +20,7 @@ public class PlayerSettings : Singleton<PlayerSettings>
 	public void ResetDefaultSettings ()
 	{
 		PlayerPrefs.SetInt (FIRST_START, FALSE);
-		PlayerPrefs.SetString (LANGUAGE, "ES");
+		PlayerPrefs.SetString (LANGUAGE, "es");
 		PlayerPrefs.SetInt (MUSIC_ENABLED, TRUE);
 		PlayerPrefs.SetInt (FX_ENABLED, TRUE);
 		PlayerPrefs.Save ();
