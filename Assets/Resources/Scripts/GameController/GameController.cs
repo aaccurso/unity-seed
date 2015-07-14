@@ -1,29 +1,34 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 public class GameController : MonoBehaviour
 {
-	public List<Singleton> singletons;
-	
+	const float FADE_DURATION = 0.3f;
+
+	public AudioClip music;
+	FadeScreenTransition screenTransition;
+
 	void Awake ()
 	{
-		InstantiateSingletons ();
+		GameObject ScreenFX = GameObject.FindGameObjectWithTag (Tags.SCREEN_FX);
+		if (ScreenFX) {
+			screenTransition = ScreenFX.GetComponentInChildren<FadeScreenTransition> ();
+		}
 	}
 
-	void InstantiateSingletons ()
+	void Start ()
 	{
-		singletons.ForEach ((singleton) => {
-			// Instantiate only if singleton not found
-			if (!GameObject.Find (singleton.name)) {
-				Object singletonInstance = Instantiate (singleton);
-				singletonInstance.name = singleton.name;
-			}
-		});
+		SoundManager.Instance.PlayMusic (music);
 	}
 
 	public void GoToLevel (string level)
 	{
-		Application.LoadLevel (level);
+		SoundManager.Instance.StopMusic (FADE_DURATION);
+		if (screenTransition) {
+			screenTransition.PreTransition (level, FADE_DURATION);
+		} else {
+			Application.LoadLevel (level);
+		}
 	}
 }
